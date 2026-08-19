@@ -1,0 +1,288 @@
+# FailID_003748 VP++ SF neg RV64 flw
+
+* Reference model (REF): Sail RISC-V
+* DUT: VP++ SF
+* Source test set: neg/RV64
+* Target: RV64 with the RISC-V F, D, and Zfh floating-point extensions.
+* FailID: 3748
+* Isolated failing instruction: `flw`
+* Minimized failing test case: [cblock_minimized_test_case.json](cblock_minimized_test_case.json)
+* Resulting REF machine state: [mstate_RefSail.json](mstate_RefSail.json)
+* Resulting DUT machine state: [mstate_DUT_VPpp_SF.json](mstate_DUT_VPpp_SF.json)
+* Automated failure characterization report: [AFC_FP_report.log](AFC_FP_report.log)
+
+## Report
+
+### Minimized Failing Test Case
+```
+    // FLOATINGPOINT STATE DATA
+    j _float_data_end
+    .align 4
+_reg_f0: .byte 0xd3,0x0a,0xff,0xff,0xff,0xff,0xff,0xff
+_reg_f1: .byte 0xce,0x10,0x73,0x12,0x5a,0x17,0xe7,0x4e
+_reg_f2: .byte 0x8a,0x38,0xf9,0xb8,0x94,0x5a,0x4d,0x8e
+_reg_f3: .byte 0x3a,0x77,0x51,0x1f,0x9c,0x56,0xea,0xf6
+_reg_f4: .byte 0x67,0xa3,0x80,0x82,0xed,0x7a,0xea,0x30
+_reg_f5: .byte 0x0c,0xc6,0x60,0x5d,0xfc,0xbd,0xb4,0xde
+_reg_f6: .byte 0x00,0x00,0xc0,0x7f,0xff,0xff,0xff,0xff
+_reg_f7: .byte 0x5c,0xe6,0xd2,0x1a,0x3d,0x6c,0xc4,0x6d
+_reg_f8: .byte 0x03,0xae,0x07,0x1f,0x9a,0x48,0x48,0xaa
+_reg_f9: .byte 0xef,0xba,0x0a,0xcb,0xff,0xde,0x3e,0x73
+_reg_f10:.byte 0xbe,0xab,0xb2,0xfd,0xb8,0xa7,0x1b,0x13
+_reg_f11:.byte 0xa3,0x41,0xed,0x65,0x68,0x4b,0x08,0xc8
+_reg_f12:.byte 0xce,0x10,0x73,0x12,0x5a,0x17,0xe7,0x4e
+_reg_f13:.byte 0x00,0x00,0x60,0x72,0xc0,0x5a,0xef,0x41
+_reg_f14:.byte 0x00,0x00,0x00,0x00,0xff,0xff,0xff,0xff
+_reg_f15:.byte 0x57,0xa2,0x73,0x0b,0x9c,0x3d,0xa7,0xc0
+_reg_f16:.byte 0x84,0x9c,0x7c,0x7e,0xe5,0xc3,0x3c,0x95
+_reg_f17:.byte 0x62,0x69,0xc0,0x9f,0x89,0x79,0x90,0xe5
+_reg_f18:.byte 0x71,0x6f,0xfe,0x9b,0x9b,0x86,0x65,0xf8
+_reg_f19:.byte 0x03,0x4b,0x66,0x8f,0x05,0x93,0xb5,0x61
+_reg_f20:.byte 0x26,0x0f,0xe0,0x9d,0x6d,0x79,0x5c,0x9d
+_reg_f21:.byte 0x3d,0x73,0xcf,0x54,0xf5,0xd9,0x87,0xb8
+_reg_f22:.byte 0xd7,0xe0,0x32,0x5d,0x7e,0xd0,0x32,0x36
+_reg_f23:.byte 0x00,0x00,0xc0,0x7f,0xff,0xff,0xff,0xff
+_reg_f24:.byte 0x00,0x00,0x00,0x00,0x00,0x00,0xf0,0x3f
+_reg_f25:.byte 0x89,0xa5,0xe7,0xc8,0x5d,0x29,0x57,0x4c
+_reg_f26:.byte 0xa3,0x41,0xed,0x65,0x68,0x4b,0x08,0xc8
+_reg_f27:.byte 0x74,0x05,0xbb,0xeb,0xca,0xa4,0x92,0x90
+_reg_f28:.byte 0xba,0x6c,0x66,0x23,0xbd,0x5d,0x9c,0x86
+_reg_f29:.byte 0x85,0x81,0xe7,0xa5,0x0f,0x26,0xfc,0x95
+_reg_f30:.byte 0xc5,0xfc,0x81,0x33,0xdc,0x2b,0xa4,0xf7
+_reg_f31:.byte 0xbf,0x1c,0x28,0xc3,0x10,0x10,0x10,0xc8
+_float_data_end:
+    // FLOATINTPOINT STATE
+    la t0, _reg_f0
+    fld  f0, 0(t0)
+    la t0, _reg_f1
+    fld  f1, 0(t0)
+    la t0, _reg_f2
+    fld  f2, 0(t0)
+    la t0, _reg_f3
+    fld  f3, 0(t0)
+    la t0, _reg_f4
+    fld  f4, 0(t0)
+    la t0, _reg_f5
+    fld  f5, 0(t0)
+    la t0, _reg_f6
+    fld  f6, 0(t0)
+    la t0, _reg_f7
+    fld  f7, 0(t0)
+    la t0, _reg_f8
+    fld  f8, 0(t0)
+    la t0, _reg_f9
+    fld  f9, 0(t0)
+    la t0, _reg_f10
+    fld  f10, 0(t0)
+    la t0, _reg_f11
+    fld  f11, 0(t0)
+    la t0, _reg_f12
+    fld  f12, 0(t0)
+    la t0, _reg_f13
+    fld  f13, 0(t0)
+    la t0, _reg_f14
+    fld  f14, 0(t0)
+    la t0, _reg_f15
+    fld  f15, 0(t0)
+    la t0, _reg_f16
+    fld  f16, 0(t0)
+    la t0, _reg_f17
+    fld  f17, 0(t0)
+    la t0, _reg_f18
+    fld  f18, 0(t0)
+    la t0, _reg_f19
+    fld  f19, 0(t0)
+    la t0, _reg_f20
+    fld  f20, 0(t0)
+    la t0, _reg_f21
+    fld  f21, 0(t0)
+    la t0, _reg_f22
+    fld  f22, 0(t0)
+    la t0, _reg_f23
+    fld  f23, 0(t0)
+    la t0, _reg_f24
+    fld  f24, 0(t0)
+    la t0, _reg_f25
+    fld  f25, 0(t0)
+    la t0, _reg_f26
+    fld  f26, 0(t0)
+    la t0, _reg_f27
+    fld  f27, 0(t0)
+    la t0, _reg_f28
+    fld  f28, 0(t0)
+    la t0, _reg_f29
+    fld  f29, 0(t0)
+    la t0, _reg_f30
+    fld  f30, 0(t0)
+    la t0, _reg_f31
+    fld  f31, 0(t0)
+
+    // restore fcsr = {'nx': True, 'uf': False, 'of': False, 'dz': False, 'nv': False, 'rm': 'rne(0b000)', 'res': 0}
+    li t0, 0x1
+    csrrw zero, fcsr, t0
+
+    // STATE
+
+    // restore mstatus.fs/vs = {'fs': 'off', 'vs': 'off'}
+    li t0, 0x6600
+    csrc mstatus, t0
+    li t0, 0x0
+    csrs mstatus, t0
+
+    // restore registers
+    li x1, 0x80000016            // ra
+    li x2, 0x0                   // sp
+    li x3, 0x2c                  // gp
+    li x4, 0x80000cf0            // tp
+    li x5, 0x8015ffef            // t0
+    li x6, 0x80180334            // t1
+    li x7, 0x0                   // t2
+    li x8, 0x7ffff8af            // fp
+    li x9, 0x801dfe8c            // s1
+    li x10, 0x86                 // a0
+    li x11, 0x801ffd06           // a1
+    li x12, 0x80000016           // a2
+    li x13, 0x0                  // a3
+    li x14, 0x8017feb2           // a4
+    li x15, 0x80180710           // a5
+    li x16, 0x7ffff8af           // a6
+    li x17, 0x8017fbea           // a7
+    li x18, 0x0                  // s2
+    li x19, 0x8017fd78           // s3
+    li x20, 0xa3                 // s4
+    li x21, 0x1                  // s5
+    li x22, 0x1                  // s6
+    li x23, 0x80180406           // s7
+    li x24, 0x80180428           // s8
+    li x25, 0xff9e800000000000   // s9
+    li x26, 0x80180428           // s10
+    li x27, 0x6000               // s11
+    li x28, 0x0                  // t3
+    li x29, 0xa1                 // t4
+    li x30, 0x7ffffd9f           // t5
+    li x31, 0x8017fe9d           // t6
+    // INSTRUCTION ({'dep': {'mstatus.fs/vs.fs', 'fcsr.rm', 'x28'}, 'clob': {'x28', 'f11', 'x23'}})
+    
+    li x23, 0x1ffffc
+    and x28, x28, x23
+    li x23, 0x800005c2
+    add x28, x28, x23
+    flw f11, -0x5c2(x28)
+```
+
+### Resulting Machine State Diff
+```
+REG                 REF                                             DUT                                             DIFF
+
+STATE               REF                                             DUT                                             DIFF
+#exceptions         0x0000000000000001(1)                           0x0000000000000000(0)                           X
+f11                 0xc8084b6865ed41a3(-1.0333763714975547e+39_d)   0xffffffff2140006f(6.505270420568022e-19_s)     X
+STATES DIFFER: True
+```
+
+### Automated Failure Characterization Report
+```
++========================================================================================================================+
+Instruction: flw f11, -0x5c2(x28)
++========================================================================================================================+
+Attributes:  fcsr ['inexact']
++------------------------------------------------------------------------------------------------------------------------+
+REG                 REF                                             DUT                                             DIFF 
++------------------------------------------------------------------------------------------------------------------------+
+diffs:
+#exceptions         0x0000000000000001(1)                           0x0000000000000000(0)                           X
+f11                 0xc8084b6865ed41a3(-1.0333763714975547e+39_d)   0xffffffff2140006f(6.505270420568022e-19_s)     X
++------------------------------------------------------------------------------------------------------------------------+
+Registers: f11, x5, c2, x28
+t0(x5)              0x000000008015ffef(2148925423)                  0x000000008015ffef(2148925423)
+t3(x28)             0x00000000800005c2(2147485122)                  0x00000000800005c2(2147485122)
+f11                 0xc8084b6865ed41a3(-1.0333763714975547e+39_d)   0xffffffff2140006f(6.505270420568022e-19_s)     X
++========================================================================================================================+
+```
+
+### Resulting Full Machine State Diff
+```
+REG                 REF                                             DUT                                             DIFF
+zero(x0)            0x0000000000000000(0)                           0x0000000000000000(0)                           
+ra(x1)              0x0000000080000016(2147483670)                  0x0000000080000016(2147483670)                  
+sp(x2)              0x0000000000000000(0)                           0x0000000000000000(0)                           
+gp(x3)              0x000000000000002c(44)                          0x000000000000002c(44)                          
+tp(x4)              0x0000000080000cf0(2147486960)                  0x0000000080000cf0(2147486960)                  
+t0(x5)              0x000000008015ffef(2148925423)                  0x000000008015ffef(2148925423)                  
+t1(x6)              0x0000000080180334(2149057332)                  0x0000000080180334(2149057332)                  
+t2(x7)              0x0000000000000000(0)                           0x0000000000000000(0)                           
+fp(x8)              0x000000007ffff8af(2147481775)                  0x000000007ffff8af(2147481775)                  
+s1(x9)              0x00000000801dfe8c(2149449356)                  0x00000000801dfe8c(2149449356)                  
+a0(x10)             0x0000000000000086(134)                         0x0000000000000086(134)                         
+a1(x11)             0x00000000801ffd06(2149580038)                  0x00000000801ffd06(2149580038)                  
+a2(x12)             0x0000000080000016(2147483670)                  0x0000000080000016(2147483670)                  
+a3(x13)             0x0000000000000000(0)                           0x0000000000000000(0)                           
+a4(x14)             0x000000008017feb2(2149056178)                  0x000000008017feb2(2149056178)                  
+a5(x15)             0x0000000080180710(2149058320)                  0x0000000080180710(2149058320)                  
+a6(x16)             0x000000007ffff8af(2147481775)                  0x000000007ffff8af(2147481775)                  
+a7(x17)             0x000000008017fbea(2149055466)                  0x000000008017fbea(2149055466)                  
+s2(x18)             0x0000000000000000(0)                           0x0000000000000000(0)                           
+s3(x19)             0x000000008017fd78(2149055864)                  0x000000008017fd78(2149055864)                  
+s4(x20)             0x00000000000000a3(163)                         0x00000000000000a3(163)                         
+s5(x21)             0x0000000000000001(1)                           0x0000000000000001(1)                           
+s6(x22)             0x0000000000000001(1)                           0x0000000000000001(1)                           
+s7(x23)             0x00000000800005c2(2147485122)                  0x00000000800005c2(2147485122)                  
+s8(x24)             0x0000000080180428(2149057576)                  0x0000000080180428(2149057576)                  
+s9(x25)             0xff9e800000000000(18419300263480262656)        0xff9e800000000000(18419300263480262656)        
+s10(x26)            0x0000000080180428(2149057576)                  0x0000000080180428(2149057576)                  
+s11(x27)            0x0000000000006000(24576)                       0x0000000000006000(24576)                       
+t3(x28)             0x00000000800005c2(2147485122)                  0x00000000800005c2(2147485122)                  
+t4(x29)             0x00000000000000a1(161)                         0x00000000000000a1(161)                         
+t5(x30)             0x000000007ffffd9f(2147483039)                  0x000000007ffffd9f(2147483039)                  
+t6(x31)             0x000000008017fe9d(2149056157)                  0x000000008017fe9d(2149056157)                  
+
+STATE               REF                                             DUT                                             DIFF
+xmemhash            465f1cfe3c564d83a67b955ec47c9a1b58b866d1        465f1cfe3c564d83a67b955ec47c9a1b58b866d1        
+dmemhash            95823c334fce55968e8d2827ccd1cf77cee19abd        95823c334fce55968e8d2827ccd1cf77cee19abd        
+lastPC              0x000000008000074c(2147485516)                  0x000000008000074c(2147485516)                  
+#exceptions         0x0000000000000001(1)                           0x0000000000000000(0)                           X
+mstatus.fs/vs       0x0000000000000000(0)                           0x0000000000000000(0)                           
+ mstatus.fs/vs.fs   off                                             off                                             
+ mstatus.fs/vs.vs   off                                             off                                             
+fcsr                0x0000000000000001(1)                           0x0000000000000001(1)                           
+ fcsr.nx            True                                            True                                            
+ fcsr.uf            False                                           False                                           
+ fcsr.of            False                                           False                                           
+ fcsr.dz            False                                           False                                           
+ fcsr.nv            False                                           False                                           
+ fcsr.rm            rne(0b000)                                      rne(0b000)                                      
+ fcsr.res           0x0000000000000000(0)                           0x0000000000000000(0)                           
+f0                  0xffffffffffff0ad3(0.00020825862884521484_h)    0xffffffffffff0ad3(0.00020825862884521484_h)    
+f1                  0x4ee7175a127310ce(1.2749578435636118e+72_d)    0x4ee7175a127310ce(1.2749578435636118e+72_d)    
+f2                  0x8e4d5a94b8f9388a(-8.804369613034713e-240_d)   0x8e4d5a94b8f9388a(-8.804369613034713e-240_d)   
+f3                  0xf6ea569c1f51773a(-6.634898317711435e+264_d)   0xf6ea569c1f51773a(-6.634898317711435e+264_d)   
+f4                  0x30ea7aed8280a367(4.68351702933114e-73_d)      0x30ea7aed8280a367(4.68351702933114e-73_d)      
+f5                  0xdeb4bdfc5d60c60c(-1.6576440472835102e+148_d)  0xdeb4bdfc5d60c60c(-1.6576440472835102e+148_d)  
+f6                  0xffffffff7fc00000(nan_s)                       0xffffffff7fc00000(nan_s)                       
+f7                  0x6dc46c3d1ad2e65c(5.767429313112931e+220_d)    0x6dc46c3d1ad2e65c(5.767429313112931e+220_d)    
+f8                  0xaa48489a1f07ae03(-5.294008362103327e-105_d)   0xaa48489a1f07ae03(-5.294008362103327e-105_d)   
+f9                  0x733edeffcb0abaef(1.349051204474506e+247_d)    0x733edeffcb0abaef(1.349051204474506e+247_d)    
+f10                 0x131ba7b8fdb2abbe(1.253485769659883e-216_d)    0x131ba7b8fdb2abbe(1.253485769659883e-216_d)    
+f11                 0xc8084b6865ed41a3(-1.0333763714975547e+39_d)   0xffffffff2140006f(6.505270420568022e-19_s)     X
+f12                 0x4ee7175a127310ce(1.2749578435636118e+72_d)    0x4ee7175a127310ce(1.2749578435636118e+72_d)    
+f13                 0x41ef5ac072600000(4208329619.0_d)              0x41ef5ac072600000(4208329619.0_d)              
+f14                 0xffffffff00000000(0.0_s)                       0xffffffff00000000(0.0_s)                       
+f15                 0xc0a73d9c0b73a257(-2974.8047748695058_d)       0xc0a73d9c0b73a257(-2974.8047748695058_d)       
+f16                 0x953cc3e57e7c9c84(-2.2399106332191008e-206_d)  0x953cc3e57e7c9c84(-2.2399106332191008e-206_d)  
+f17                 0xe59079899fc06962(-1.70905643633674e+181_d)    0xe59079899fc06962(-1.70905643633674e+181_d)    
+f18                 0xf865869b9bfe6f71(-9.09757496835836e+271_d)    0xf865869b9bfe6f71(-9.09757496835836e+271_d)    
+f19                 0x61b593058f664b03(4.853046601711578e+162_d)    0x61b593058f664b03(4.853046601711578e+162_d)    
+f20                 0x9d5c796d9de00f26(-3.017976933827193e-167_d)   0x9d5c796d9de00f26(-3.017976933827193e-167_d)   
+f21                 0xb887d9f554cf733d(-2.24297484931534e-36_d)     0xb887d9f554cf733d(-2.24297484931534e-36_d)     
+f22                 0x3632d07e5d32e0d7(1.2873354146123362e-47_d)    0x3632d07e5d32e0d7(1.2873354146123362e-47_d)    
+f23                 0xffffffff7fc00000(nan_s)                       0xffffffff7fc00000(nan_s)                       
+f24                 0x3ff0000000000000(1.0_d)                       0x3ff0000000000000(1.0_d)                       
+f25                 0x4c57295dc8e7a589(5.8155055914587485e+59_d)    0x4c57295dc8e7a589(5.8155055914587485e+59_d)    
+f26                 0xc8084b6865ed41a3(-1.0333763714975547e+39_d)   0xc8084b6865ed41a3(-1.0333763714975547e+39_d)   
+f27                 0x9092a4caebbb0574(-7.68556689151021e-229_d)    0x9092a4caebbb0574(-7.68556689151021e-229_d)    
+f28                 0x869c5dbd23666cba(-8.001007128548176e-277_d)   0x869c5dbd23666cba(-8.001007128548176e-277_d)   
+f29                 0x95fc260fa5e78185(-8.978027008110316e-203_d)   0x95fc260fa5e78185(-8.978027008110316e-203_d)   
+f30                 0xf7a42bdc3381fcc5(-2.0813286457650433e+268_d)  0xf7a42bdc3381fcc5(-2.0813286457650433e+268_d)  
+f31                 0xc8101010c3281cbf(-1.3664681384163016e+39_d)   0xc8101010c3281cbf(-1.3664681384163016e+39_d)   
+STATES DIFFER: True
+```
