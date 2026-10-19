@@ -1,5 +1,9 @@
 # FP-RVVTS: Sail-Guided RISC-V Floating-Point Test Results
 
+**Powered by [RVVTS](https://github.com/ics-jku/riscv-vp-plusplus):**
+
+[![RVVTS logo](https://raw.githubusercontent.com/ics-jku/RVVTS/master/doc/logo/preview/RVVTS_logo_name.png)](https://github.com/ics-jku/rvvts)
+
 This repository contains FP-RVVTS test sets, reports, and categorized failure cases for Sail RISC-V vs. floating-point designs under test (DUTs) discussed in the paper [FP-RVVTS: Sail-guided Verification of RISC-V Floating-Point Implementations](https://ics.jku.at/files/2026FDL_FP-RVVTS.pdf) by Katharina Ruep, Manfred Schlägl, and Daniel Große.
 
 **Note:** **The FP-RVVTS framework announced in the paper has since been integrated into the main [RVVTS repository](https://github.com/ics-jku/RVVTS). This repository contains the pre-generated FP-RVVTS test sets and the archived result reports for the RV64 artifact.**
